@@ -12,7 +12,7 @@ class Permission extends Model
     use SoftDeletes;
 
     //deklarasi model ke tabel
-    public $table = 'permisson';
+    public $table = 'permission';
 
     //fill yang harus diisi format date
     protected $dates = [

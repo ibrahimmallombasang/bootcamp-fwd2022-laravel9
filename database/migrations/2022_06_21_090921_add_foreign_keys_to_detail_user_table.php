@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('detail_user', function (Blueprint $table) {
             //nama-kolom-tabel-fk, constraint (terserah) -> references(nama-kolom-tabel-pk)->on(nama-tabel-pk)->privillege
-            $table->foreignId('user_id', 'fk_detail_user_to_user')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreignId('user_id', 'fk_detail_user_to_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreignId('type_user_id', 'fk_detail_user_to_type_user')->references('id')->on('type_user')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
@@ -28,7 +28,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('detail_user', function (Blueprint $table) {
-            //
+            $table->dropForeign('fk_detail_user_to_users');
+            $table->dropForeign('fk_detail_user_to_type_user');
         });
     }
 };

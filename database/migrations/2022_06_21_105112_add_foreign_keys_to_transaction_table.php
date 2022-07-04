@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('transaction', function (Blueprint $table) {
-            //
+            $table->dropForeign('fk_transaction_to_appointment');
         });
     }
 };
